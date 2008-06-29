@@ -4,12 +4,12 @@ Tags: Feed,RSS,Friend
 Donate link: http://fairyfish.net/donate/
 Requires at least: 2.0
 Tested up to: 2.5
-Stable tag: 0.1
+Stable tag: 0.2
 
 Top Friends is a WordPress blogroll enhancement plugin. The plugin will fetch your friends¡¯ feeds, and then display the feed¡¯s name and status icon base on last update time and latest two posts of the feed.
 
 == Description ==
-<p>Top Friends is a WordPress blogroll enhancement plugin. The plugin will fetch your friends¡¯ feeds, and then display the feed¡¯s name and status icon base on last update time and latest two posts of the feed.</p>
+<p>Top Friends is a WordPress blogroll enhancement plugin. The plugin will fetch your friends' feeds, and then display the feed's name and status icon base on last update time and latest two posts of the feed.</p>
 
 <p>The plugin uses Google AjaxFeed API to fetch feed. So it need your server can manipulate JSON format data (PHP >= 5.2).</p>
 == Installation ==

@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Top Friends
-Version: 0.1
+Version: 0.2
 Plugin URI: http://fairyfish.net/2008/06/02/top-friends/
 Description: Top Friends
 Author: Denis
@@ -41,8 +41,8 @@ function top_friends(){
   
     global $google_ajax_feed_apikey, $top_friends_feeds;
     
-    foreach($top_friends_feeds as $feed){
-      $google_ajax_feed_url =  'http://ajax.googleapis.com/ajax/services/feed/load?v=1.0&q='.urlencode($feed);
+    foreach($top_friends_feeds as $top_friends_feed){
+      $google_ajax_feed_url =  'http://ajax.googleapis.com/ajax/services/feed/load?v=1.0&q='.urlencode($top_friends_feed);
       if($google_ajax_feed_apikey) $google_ajax_feed_url .= '&key='.$google_ajax_feed_apikey;
       
       $result = fetch_google_ajax_feed($google_ajax_feed_url);
@@ -67,19 +67,19 @@ function top_friends(){
         $mins = floor($cc%3600/60);
         
         if ($days > 30) {
-          $top_friends_string .= '<a href="'.$feed.'" title="Last Update: 1 month ago" target="_blank" >'.'<img src="'.get_option('siteurl') . '/'. PLUGINDIR . '/' . dirname(plugin_basename (__FILE__)) . '/images/sig_01.gif" />'.'</a> <br />'. "\n";
+          $top_friends_string .= '<a href="'.$top_friends_feed.'" title="Last Update: 1 month ago" target="_blank" >'.'<img src="'.get_option('siteurl') . '/'. PLUGINDIR . '/' . dirname(plugin_basename (__FILE__)) . '/images/sig_01.gif" />'.'</a> <br />'. "\n";
         } elseif ($days > 15) {
-          $top_friends_string .= '<a href="'.$feed.'" title="Last Update: '.$days.' days ago" target="_blank" >'.'<img src="'.get_option('siteurl'). '/'.PLUGINDIR . '/' . dirname(plugin_basename (__FILE__)) . '/images/sig_02.gif" />'.'</a> <br />'. "\n";
+          $top_friends_string .= '<a href="'.$top_friends_feed.'" title="Last Update: '.$days.' days ago" target="_blank" >'.'<img src="'.get_option('siteurl'). '/'.PLUGINDIR . '/' . dirname(plugin_basename (__FILE__)) . '/images/sig_02.gif" />'.'</a> <br />'. "\n";
         } elseif ($days > 10) {
-          $top_friends_string .= '<a href="'.$feed.'" title="Last Update: '.$days.' days ago" target="_blank" >'.'<img src="'.get_option('siteurl'). '/'.PLUGINDIR . '/' . dirname(plugin_basename (__FILE__)) . '/images/sig_03.gif" />'.'</a> <br />'. "\n";
+          $top_friends_string .= '<a href="'.$top_friends_feed.'" title="Last Update: '.$days.' days ago" target="_blank" >'.'<img src="'.get_option('siteurl'). '/'.PLUGINDIR . '/' . dirname(plugin_basename (__FILE__)) . '/images/sig_03.gif" />'.'</a> <br />'. "\n";
         } elseif ($days > 5) {
-          $top_friends_string .= '<a href="'.$feed.'" title="Last Update: '.$days.' days ago" target="_blank" >'.'<img src="'.get_option('siteurl'). '/'.PLUGINDIR . '/' . dirname(plugin_basename (__FILE__)) . '/images/sig_04.gif" />'.'</a> <br />'. "\n";
+          $top_friends_string .= '<a href="'.$top_friends_feed.'" title="Last Update: '.$days.' days ago" target="_blank" >'.'<img src="'.get_option('siteurl'). '/'.PLUGINDIR . '/' . dirname(plugin_basename (__FILE__)) . '/images/sig_04.gif" />'.'</a> <br />'. "\n";
         } elseif ($days > 1) {
-          $top_friends_string .= '<a href="'.$feed.'" title="Last Update: '.$days.' days ';
+          $top_friends_string .= '<a href="'.$top_friends_feed.'" title="Last Update: '.$days.' days ';
           if($hours) $top_friends_string .= $hours.' hours ';
           $top_friends_string .= 'ago"  target="_blank" >'.'<img src="'.get_option('siteurl'). '/'.PLUGINDIR . '/' . dirname(plugin_basename (__FILE__)) . '/images/sig_05.gif" />'.'</a> <br />'. "\n";
         } else {
-          $top_friends_string .= '<a href="'.$feed.'" title="Last Update: '.$hours.' hours ';
+          $top_friends_string .= '<a href="'.$top_friends_feed.'" title="Last Update: '.$hours.' hours ';
           if($mins) $top_friends_string .= $mins.' minutes ';
           $top_friends_string .= 'ago"  target="_blank" >'.'<img src="'.get_option('siteurl'). '/'.PLUGINDIR . '/' . dirname(plugin_basename (__FILE__)) . '/images/sig_06.gif" />'.'</a> <br />'. "\n";
         }
